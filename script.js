@@ -12,7 +12,7 @@ const options = {
 }
 
 async function getJoke() {
-    jokeEl.textContent = "loading..."
+    jokeEl.textContent = "updating..."
     const response = await fetch(apiURL, options)
     const data = await response.json()
     const joke = data[0].joke;
