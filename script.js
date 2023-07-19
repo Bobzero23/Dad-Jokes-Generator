@@ -12,11 +12,21 @@ const options = {
 }
 
 async function getJoke() {
-    jokeEl.textContent = "updating..."
-    const response = await fetch(apiURL, options)
-    const data = await response.json()
-    const joke = data[0].joke;
-    jokeEl.textContent = joke;
+    try {
+        jokeEl.textContent = "updating..."
+        btnEl.diabled = "true"
+        btnEl.textContent = "loading.."
+        const response = await fetch(apiURL, options)
+        const data = await response.json()
+        btnEl.textContent = "tell me a joke"
+        const joke = data[0].joke;
+        jokeEl.textContent = joke;
+    } catch (error) {
+        jokeEl.textContent = "error happened, try again later"
+        btnEl.textContent = "tell me a joke";
+    }
+
+
 }
 
 btnEl.addEventListener("click", getJoke);
