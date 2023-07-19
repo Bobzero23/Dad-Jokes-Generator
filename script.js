@@ -14,10 +14,11 @@ const options = {
 async function getJoke() {
     try {
         jokeEl.textContent = "updating..."
-        btnEl.diabled = "true"
+        btnEl.disabled = "true"
         btnEl.textContent = "loading.."
         const response = await fetch(apiURL, options)
         const data = await response.json()
+        btnEl.disabled = "false";
         btnEl.textContent = "tell me a joke"
         const joke = data[0].joke;
         jokeEl.textContent = joke;
